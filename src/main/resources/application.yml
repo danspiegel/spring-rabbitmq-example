@@ -1,0 +1,48 @@
+spring:
+  application:
+    name: aws
+    description: APIs e Web Services
+  main:
+    banner-mode: "off"
+    allow-bean-definition-overriding: true
+  beaninfo:
+    ignore: true
+server:
+  address: 0.0.0.0
+  port: 8080
+  servlet:
+    session:
+      cookie:
+        http-only: true
+        secure: true
+  error:
+    whitelabel:
+      enabled: false
+management:
+  server:
+    port: 9090
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: info, health, metrics, prometheus
+
+---
+
+# configurações para desenvolvimento local
+
+spring:
+  profiles:
+    active: local
+  rabbitmq:
+    host: localhost
+    port: 5672
+    virtualhost: /
+    username: guest
+    password: guest
+
+
+
+
